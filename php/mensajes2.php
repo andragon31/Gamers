@@ -1,6 +1,7 @@
 <?php
 
     include 'conexion.php';
+    include 'ingresarsala.php';
     //include 'ingresarsala.php'
     //setlocale(LC_ALL, 'es_ES');
     //date_default_timezone_set('America/Tegucigalpa');
@@ -9,10 +10,12 @@
     //$time = time();
     //date("d-m-Y (H:i:s)", $time);
     //var_dump(date("d-m-Y (H:i:s)", $time));
-    $idsala = 1;
+    
+    $idsala = $_SESSION['IDSala'];
+
     
     //$result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala WHERE IDSala = '%s'",$idsala));
-    $result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala INNER JOIN Usuario ON MensajesxSala.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDSala = '%s'",$idsala));
+    $result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala INNER JOIN Usuario ON MensajesxSala.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDSala = '%s' ORDER BY IDMensajesxSala ASC",$idsala));
 
     $mensajes=array();
 

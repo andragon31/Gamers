@@ -78,7 +78,7 @@
                     
                         <!-- Register -->
                         <p class="white-text">No eres miembro?
-                            <a class="purple-text" href="registro.html">Registrate</a>
+                            <a class="purple-text" href="registro.php">Registrate</a>
                         </p>
                     
                     </form>

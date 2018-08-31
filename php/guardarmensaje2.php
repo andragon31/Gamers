@@ -1,13 +1,14 @@
 <?php
     include 'conexion.php';
+    include 'ingresarsala.php';
 
     $_POST = json_decode(file_get_contents('php://input'), true);
     if(isset($_POST['message']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
         $msg = $_POST['message'];
-        $idsala = 1;
-        $idusuario = 1;
+        $idsala = $_SESSION['IDSala'];
+        $idusuario = $_SESSION['IDUsuario'];
         setlocale(LC_ALL, 'es_ES');
         date_default_timezone_set('America/Tegucigalpa');
         $fecha = date('d/m/Y g:ia');
@@ -30,9 +31,9 @@
 
         if(isset($_POST['datos']))
         {
-            $idsala = 1;
+            $idsala = $_SESSION['IDSala'];
             //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-            $result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala INNER JOIN Usuario ON MensajesxSala.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDSala = '%s'",$idsala));
+            $result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala INNER JOIN Usuario ON MensajesxSala.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDSala = '%s' ORDER BY IDMensajesxSala ASC",$idsala));
             $mensajes=array();
 
             if (mysqli_num_rows($result)!= 0)

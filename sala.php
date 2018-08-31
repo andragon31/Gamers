@@ -4,16 +4,24 @@
         session_start ();
     }
     include 'php/conexion.php';
+    include 'php/ingresarsala.php';
+
     
     //var_dump($_SESSION["IDSala"]);
     //echo '<script>alert("'.$_SESSION["IDSala"].'")</script> ';
-    $idusuario = 1;
+    
+
+    //echo '<script>alert("'.$idusuario.'")</script>';
+    
     if (!isset($_SESSION['IDUsuario']))
     {
         echo '<script> window.location = "login.php";</script>';
     }
     else
     {
+        $idusuario = $_SESSION['IDUsuario'];
+        //var_dump($idusuario);
+        $idsala = $_SESSION['IDSala'];
         //id del usuario ingresado
         //echo '<script> alert("' . $_SESSION['IDUsuario'] . '");</script>';
     }
