@@ -75,6 +75,31 @@
 </header>
 <br><br><br><br><br><br><br>
     <!--body-->
+    <h2>HOLA MUNDO</h2>
+    <!--TABLA DE USUARIOS-->
+    <div class="table-wrapper-scroll-y" style="width:150px;" id="usuarios">
+        <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+            <th scope="col">USUARIOS A RETAR</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr v-for="user in mensajejson">
+                <td v-if="user.IDUsuario != <?php echo $idusuario ?>">
+                    <form action="" method="">
+                        <input type="hidden" name="idsala" v-bind:value="user.IDUsuario">
+                    <button name="retar" class="btn btn-info my-4 btn-block purple darken-3" type="">{{user.NombreUsuario}}</button>
+                    </form>
+                </td>
+                </tr>  
+        </tbody>
+        </table>
+
+    </div>
+
+    <!--FIN DE TABLA DE USUARIOS-->
+
     <button type="button" class="btn btn-primary purple darken-3" data-toggle="modal" data-target="#modalPoll" style="position:absolute; bottom:90px; right:10px;">Mensajes</button>
     <!-- Modal: modalPoll -->
     <div class="modal fade right" id="modalPoll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -92,12 +117,12 @@
         </div>
 
         <!--Body-->
-        <div class="modal-body">
+        <div class="modal-body" style="">
             <!--BLOQUE DE MENSAJES DE LA SALA-->
             <div id="main" class="container">
                 <div class="row">
-                    <div class="col-ms-12"></div>
-                    <div class="col-ms-4">
+                    <div class="col-md-2"></div>
+                    <div class="col-ms-3">
                         <hr>
                         <div class="container" style="height: 650px; width: 350px; border: 1px solid #ddd; background: #ffffff; overflow-y: scroll;">
                             <div v-for="item in mensajejson">
@@ -134,10 +159,10 @@
         </div>
             <!--Footer-->
         </div>
+        
     </div>
     </div>
     <!-- Modal: modalPoll -->
-
     <!--fin body-->
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -165,7 +190,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
     <script src="js/vue-resource.min.js"></script>
     <script src="js/axios.min.js"></script>
-    <script src="js/vuesala.js"></script>		
+    <script src="js/vuesala.js"></script>	
+    <script src="js/vueusuarios.js"></script>	
     <script>
         // SideNav Button Initialization
         $(".button-collapse").sideNav();

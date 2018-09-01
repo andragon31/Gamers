@@ -1,4 +1,4 @@
-var urlmensajes = 'https://localhost:8080/GCCHAT/php/mensajes2.php';
+var urlmensajes = 'https://localhost:8080/GCCHAT/php/usuarios.php';
 new Vue({
     el: '#usuarios',
     created: function() {
@@ -28,7 +28,7 @@ new Vue({
         },
         enviarmensaje: function(msg) 
         {
-            this.$http.post('php/guardarmensaje2.php',{
+            this.$http.post('php/guardarusuario.php',{
                 message: this.msg
             }).then(function(response){
                 this.mensajejson = response.data;
@@ -40,7 +40,7 @@ new Vue({
         ,
         traerdatos: function(datos)
         {
-            this.$http.post('php/guardarmensaje2.php',{
+            this.$http.post('php/guardarusuario.php',{
                 datos: this.datos
             }).then(function(response){
                 this.mensajejson = response.data;
