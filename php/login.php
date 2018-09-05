@@ -19,6 +19,7 @@ if(isset($_POST['login']))
         $row = mysqli_fetch_array($result);
         $_SESSION['IDUsuario'] = $row['IDUsuario'];
         
+        
         mysqli_free_result ($result);
 		mysqli_close ($link);
         echo '<script> window.location = "../principal.php";</script>';

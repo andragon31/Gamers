@@ -22,6 +22,23 @@
         $idusuario = $_SESSION['IDUsuario'];
         //var_dump($idusuario);
         $idsala = $_SESSION['IDSala'];
+        $imgfifa="img/fifa18n.jpg";
+        $imgcod="img/cod.jpg";
+        $imgsmash="img/smash.png";
+        $background = "";
+
+        if($idsala == 1)
+        {
+            $background = $imgfifa;
+        }
+        elseif($idsala == 2)
+        {
+            $background = $imgcod;
+        }
+        else
+        {
+            $background = $imgsmash;
+        }
         //id del usuario ingresado
         //echo '<script> alert("' . $_SESSION['IDUsuario'] . '");</script>';
     }
@@ -44,11 +61,29 @@
     <link href="css/estilochat.css">
 </head>
 
-<body class="fixed-sn pink-skin" id="view">
+<style>
+body, html {
+    height: 100%;
+}
+.bg {
+    /* The image used */
+    background-image: url("<?php echo $background ?>");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
+
+<body class="bg" id="view">
 
     <!--Main Navigation-->
     <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar purple darken-3">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar rgba-indigo-light">
         <a class="navbar-brand" href="#"><img style="width:100px; margin: -20px;" class="responsive-img" src="http://gamerchallenge.net/wp-content/uploads/2018/07/logo-gamer.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -75,28 +110,50 @@
 </header>
 <br><br><br><br><br><br><br>
     <!--body-->
-    <h2>HOLA MUNDO</h2>
     <!--TABLA DE USUARIOS-->
-    <div class="table-wrapper-scroll-y" style="width:150px;" id="usuarios">
-        <table class="table table-bordered table-striped text-center">
-        <thead>
-            <tr>
-            <th scope="col">USUARIOS A RETAR</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr v-for="user in mensajejson">
-                <td v-if="user.IDUsuario != <?php echo $idusuario ?>">
-                    <form action="" method="">
-                        <input type="hidden" name="idsala" v-bind:value="user.IDUsuario">
-                    <button name="retar" class="btn btn-info my-4 btn-block purple darken-3" type="">{{user.NombreUsuario}}</button>
-                    </form>
-                </td>
-                </tr>  
-        </tbody>
-        </table>
+    <!-- Button trigger modal-->
+<button type="button" class="btn btn-primary purple darken-3" data-toggle="modal" data-target="#modalCart" style="position:absolute; bottom:90px; right:150px;">Retar</button>
 
+<!-- Modal: modalCart -->
+<div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header purple darken-3">
+                <h4 class="modal-title white-text" id="myModalLabel">Usuarios a retar</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body center-text">
+
+                <div class="container" id="usuarios">
+                    <br>
+                    <div class="row" v-for="usuario in mensajejson">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4" v-if="usuario.IDUsuario != <?php echo $idusuario ?>">
+                        <br>
+                            <h3 class="text-center"><b>{{usuario.NombreUsuario}}</b></h3>
+                        </div>
+                        <div class="col-md-4" v-if="usuario.IDUsuario != <?php echo $idusuario ?>">
+                            <form action="" method="">
+                                <button name="ingresar" class="btn btn-small my-4 btn-block purple darken-3" type="submit" style="">Retar</button>
+                                <input type="hidden" name="idretador" v-bind:value="usuario.IDUsuario">
+                            </form>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary purple darken-3 text-white" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
     </div>
+</div>
+<!-- Modal: modalCart -->
 
     <!--FIN DE TABLA DE USUARIOS-->
 
@@ -164,7 +221,7 @@
     </div>
     <!-- Modal: modalPoll -->
     <!--fin body-->
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
     <!-- Footer -->
     <footer class="page-footer font-small purple darken-3">

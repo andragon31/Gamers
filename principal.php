@@ -31,11 +31,29 @@
     <!-- Your custom styles (optional) -->
 </head>
 
-<body class="fixed-sn pink-skin" id="view">
+<style>
+body, html {
+    height: 100%;
+}
+.bg {
+    /* The image used */
+    background-image: url("img/play.png");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
+
+<body class="bg" id="view">
 
     <!--Main Navigation-->
     <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar purple darken-3">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar rgba-indigo-strong">
         <a class="navbar-brand" href="#"><img style="width:100px; margin: -20px;" class="responsive-img" src="http://gamerchallenge.net/wp-content/uploads/2018/07/logo-gamer.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -63,56 +81,57 @@
 <br><br><br><br><br><br><br>
     <!--body-->
     <!-- Card -->
-    <div class="row">
-        <div class="col-md-1 responsive"></div>
-        <div class="card col-md-2">
-            <!-- Card image -->
-            <img class="card-img-top respnsive-img" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
-            <!-- Card content -->
-            <div class="card-body">
-                <!-- Title -->
-                <h4 class="card-title"><a>FIFA 18</a></h4>
-                <!-- Text -->
-                <p class="card-text">Sala de apuestas online de FIFA 18</p>
-                <!-- Button -->
-                <form action="php/ingresarsala.php" method="post">
-                    <input type="hidden" name="idsala" value="1">
-                <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
-                </form>
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-5 offset-md-1 col-lg-3 responsive">
+                <!-- Card image -->
+                <img class="card-img-top respnsive-img" src="img/fifa.png" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a>FIFA 18</a></h4>
+                    <!-- Text -->
+                    <p class="card-text">Sala de apuestas online de FIFA 18</p>
+                    <!-- Button -->
+                    <form action="php/ingresarsala.php" method="post">
+                        <input type="hidden" name="idsala" value="1">
+                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="col-md-2 responsive"></div>
-        <div class="card col-md-2">
-            <!-- Card image -->
-            <img class="card-img-top respnsive-img" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
-            <!-- Card content -->
-            <div class="card-body">
-                <!-- Title -->
-                <h4 class="card-title"><a>Call of Duty</a></h4>
-                <!-- Text -->
-                <p class="card-text">Sala de apuestas online de CoD</p>
-                <!-- Button -->
-                <form action="php/ingresarsala.php" method="post">
-                    <input type="hidden" name="idsala" value="2">
-                <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
-                </form>
+
+            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive">
+                <!-- Card image -->
+                <img class="card-img-top respnsive-img" src="img/cod2.png" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a>Call of Duty</a></h4>
+                    <!-- Text -->
+                    <p class="card-text">Sala de apuestas online de Call of Duty</p>
+                    <!-- Button -->
+                    <form action="php/ingresarsala.php" method="post">
+                        <input type="hidden" name="idsala" value="2">
+                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="col-md-2 responsive"></div>
-        <div class="card col-md-2">
-            <!-- Card image -->
-            <img class="card-img-top respnsive-img" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
-            <!-- Card content -->
-            <div class="card-body">
-                <!-- Title -->
-                <h4 class="card-title"><a>Smash Bros</a></h4>
-                <!-- Text -->
-                <p class="card-text">Sala de apuestas online de Smash Bros</p>
-                <!-- Button -->
-                <form action="php/ingresarsala.php" method="post">
-                    <input type="hidden" name="idsala" value="3">
-                <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
-                </form>
+
+            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive">
+                <!-- Card image -->
+                <img class="card-img-top respnsive-img" src="img/smash2.png" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a>Smash Bros</a></h4>
+                    <!-- Text -->
+                    <p class="card-text">Sala de apuestas online de Smash Bros</p>
+                    <!-- Button -->
+                    <form action="php/ingresarsala.php" method="post">
+                        <input type="hidden" name="idsala" value="3">
+                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -120,7 +139,7 @@
 
 
     <!--fin body-->
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
 
     <!-- Footer -->
     <footer class="page-footer font-small purple darken-3">
