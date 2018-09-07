@@ -37,7 +37,7 @@
 <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img style="width:100px; margin: -20px;" class="responsive-img" src="http://gamerchallenge.net/wp-content/uploads/2018/07/logo-gamer.png"></a>
+                <a class="navbar-brand" href="#"><img style="width:100px; margin: -20px;" class="responsive-img" src="img/gclogo.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -90,7 +90,7 @@
     </header>
 
     <!-- Footer -->
-    <footer class="page-footer font-small purple darken-3">
+    <footer class="page-footer font-small purple darken-3 fixed-bottom">
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2018 Copyright:
           <a href="#">GamerChallenge</a>

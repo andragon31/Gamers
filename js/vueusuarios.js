@@ -2,42 +2,21 @@ var urlmensajes = 'https://localhost:8080/GCCHAT/php/usuarios.php';
 new Vue({
     el: '#usuarios',
     created: function() {
-        this.getmensajes();
+        //this.getmensajes();
         this.traerdatos();
-        this.timer = setInterval(this.traerdatos, 1000);
+        this.buscarusuario();
+        //this.timer = setInterval(this.traerdatos, 1000);
+        //this.timer = setInterval(this.buscarusuario, 1000);
         //this.timer = setInterval(this.enviarmensaje, 1000);
     },
     data: {
         timer:'',
-        msg: '',
         datos: 'datos',
         mensajejson: [],
         mensajes: [],
+        name: '',
     },
     methods: {
-        getmensajes: function() 
-        {
-            this.$http.get(urlmensajes).then(function(response){
-                this.mensajejson = response.data;
-            });
-        },
-        addmsg: function ()
-        {
-            this.mensajes.push(this.msg);
-            this.msg = '';
-        },
-        enviarmensaje: function(msg) 
-        {
-            this.$http.post('php/guardarusuario.php',{
-                message: this.msg
-            }).then(function(response){
-                this.mensajejson = response.data;
-                this.msg="";
-            }, function(){
-                alert("error");
-            });
-        }
-        ,
         traerdatos: function(datos)
         {
             this.$http.post('php/guardarusuario.php',{
@@ -49,5 +28,12 @@ new Vue({
             });
         }
 
+    },
+    computed: 
+    {
+        buscarusuario: function () 
+        {
+            return this.mensajejson.filter((item) => item.NombreUsuario.toLowerCase().includes(this.name.toLowerCase()));
+        }
     }
 });

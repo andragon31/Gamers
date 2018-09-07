@@ -4,15 +4,91 @@
         session_start ();
     }
     include 'php/conexion.php';
+    include 'php/ingresarsala.php';
+
+    
+    //var_dump($_SESSION["IDSala"]);
+    //echo '<script>alert("'.$_SESSION["IDSala"].'")</script> ';
+    
+
+    //echo '<script>alert("'.$idusuario.'")</script>';
+    
     if (!isset($_SESSION['IDUsuario']))
     {
         echo '<script> window.location = "login.php";</script>';
     }
     else
     {
+        $idusuario = $_SESSION['IDUsuario'];
+        $idsala = $_SESSION['IDSala'];
+
         //id del usuario ingresado
         //echo '<script> alert("' . $_SESSION['IDUsuario'] . '");</script>';
     }
+
+    if(isset($_POST['retar']))
+    {
+        $iduserreto = $_POST['idretador'];
+        //echo '<script> alert("'.$iduserreto.'");</script>';
+
+        $result = mysqli_query ( $link, sprintf ("SELECT NombreUsuario FROM Usuario WHERE IDUsuario = '%s'", $idusuario));
+
+
+        if (mysqli_num_rows($result) != 0) 
+        {
+            $row = mysqli_fetch_array($result);
+            $nombreretador = $row['NombreUsuario'];
+            
+            mysqli_free_result ($result);
+        }
+
+        $result = mysqli_query ( $link, sprintf ("SELECT NombreUsuario FROM Usuario WHERE IDUsuario = '%s'", $iduserreto));
+
+
+        if (mysqli_num_rows($result) != 0) 
+        {
+            $row = mysqli_fetch_array($result);
+            $nombreretado = $row['NombreUsuario'];
+            
+            mysqli_free_result ($result);
+        }
+
+        if($idusuario == 1)
+        {
+            $imgperfil = "img/dragon.png"; 
+        }
+        elseif($idusuario == 2)
+        {
+            $imgperfil = "img/horda3.jpg";
+        }
+        elseif($idusuario == 3)
+        {
+            $imgperfil = "img/pentakill2.jpg";
+        }
+        else
+        {
+            $imgperfil = "img/pillars.png";
+        }
+
+
+        if($iduserreto == 1)
+        {
+            $imgperfil2 = "img/dragon.png"; 
+        }
+        elseif($iduserreto == 2)
+        {
+            $imgperfil2 = "img/horda3.jpg";
+        }
+        elseif($iduserreto == 3)
+        {
+            $imgperfil2 = "img/pentakill2.jpg";
+        }
+        else
+        {
+            $imgperfil2 = "img/pillars.png";
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="">
@@ -29,6 +105,7 @@
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
+    <link href="css/estilochat.css">
 </head>
 
 <style>
@@ -79,57 +156,34 @@ body, html {
 </header>
 <br><br><br><br><br><br><br>
     <!--body-->
+    
+    <!--body-->
     <!-- Card -->
     <div class="container">
         <div class="row">
-            <div class="card col-md-5 offset-md-1 col-lg-3 responsive">
+            <div class="card col-md-5 offset-md-1 col-lg-3 responsive text-center">
                 <!-- Card image -->
-                <img class="card-img-top respnsive-img" src="img/fifa.png" alt="Card image cap">
+                <img class="card-img-top respnsive-img" src="<?php echo $imgperfil ?>" alt="Card image cap">
                 <!-- Card content -->
-                <div class="card-body">
+                <div class="card-body purple darken-3">
                     <!-- Title -->
-                    <h4 class="card-title"><a>FIFA 18</a></h4>
-                    <!-- Text -->
-                    <p class="card-text">Sala de apuestas online de FIFA 18</p>
-                    <!-- Button -->
-                    <form action="php/ingresarsala.php" method="post">
-                        <input type="hidden" name="idsala" value="1">
-                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
-                    </form>
+                    <h4 class="card-title white-text"><a><b><?php echo $nombreretador ?></b></a></h4>
                 </div>
             </div>
-
-            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive">
+            <div class="col-md-5 offset-md-1 col-lg-1 responsive h-100 w-100">
                 <!-- Card image -->
-                <img class="card-img-top respnsive-img" src="img/cod2.png" alt="Card image cap">
+                <br><br><br><br><br><br>
+                <img class="card-img-top respnsive-img" src="img/vs2.png" alt="Card image cap">
                 <!-- Card content -->
-                <div class="card-body">
-                    <!-- Title -->
-                    <h4 class="card-title"><a>Call of Duty</a></h4>
-                    <!-- Text -->
-                    <p class="card-text">Sala de apuestas online de Call of Duty</p>
-                    <!-- Button -->
-                    <form action="php/ingresarsala.php" method="post">
-                        <input type="hidden" name="idsala" value="2">
-                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
-                    </form>
-                </div>
             </div>
 
-            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive">
+            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive text-center">
                 <!-- Card image -->
-                <img class="card-img-top respnsive-img" src="img/smash2.png" alt="Card image cap">
+                <img class="card-img-top respnsive-img" src="<?php echo $imgperfil2 ?>" alt="Card image cap">
                 <!-- Card content -->
-                <div class="card-body">
+                <div class="card-body purple darken-3">
                     <!-- Title -->
-                    <h4 class="card-title"><a>Smash Bros</a></h4>
-                    <!-- Text -->
-                    <p class="card-text">Sala de apuestas online de Smash Bros</p>
-                    <!-- Button -->
-                    <form action="php/ingresarsala.php" method="post">
-                        <input type="hidden" name="idsala" value="3">
-                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
-                    </form>
+                    <h4 class="card-title white-text"><a><b><?php echo $nombreretado ?></b></a></h4>
                 </div>
             </div>
         </div>
@@ -137,6 +191,8 @@ body, html {
     <!-- Card -->
 
 
+    <!--fin body-->
+        
     <!--fin body-->
 
     <!-- Footer -->
@@ -159,6 +215,12 @@ body, html {
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!--LIBRERIAS JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script src="js/vue-resource.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/vuesala.js"></script>	
+    <script src="js/vueusuarios.js"></script>	
     <script>
         // SideNav Button Initialization
         $(".button-collapse").sideNav();

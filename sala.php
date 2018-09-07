@@ -84,25 +84,23 @@ body, html {
     <!--Main Navigation-->
     <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar rgba-indigo-light">
-        <a class="navbar-brand" href="#"><img style="width:100px; margin: -20px;" class="responsive-img" src="http://gamerchallenge.net/wp-content/uploads/2018/07/logo-gamer.png"></a>
+        <a class="navbar-brand" href="principal.php"><img style="width:100px; margin: -20px;" class="responsive-img" src="img/gclogo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="col-md-9">
         </div>
+        <div class="col"></div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="principal.php">Salas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Mi Cuenta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Opinions</a>
+                    <a class="nav-link" href="php/logout.php">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
@@ -110,9 +108,29 @@ body, html {
 </header>
 <br><br><br><br><br><br><br>
     <!--body-->
+
+    <h1>HOLA MUNDO</h1>
+
+    <div class="container center-items">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>DIV 1</h3>
+            </div>
+            <div class="col-md-6">
+                <h3>DIV 2</h3>
+            </div>
+            <div class="col-md-3">
+                <h3>DIV 3</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <!--TABLA DE USUARIOS-->
     <!-- Button trigger modal-->
-<button type="button" class="btn btn-primary purple darken-3" data-toggle="modal" data-target="#modalCart" style="position:absolute; bottom:90px; right:150px;">Retar</button>
+<button type="button" class="btn btn-primary purple darken-3" data-toggle="modal" data-target="#modalCart" style="position:absolute; bottom:90px; right:150px;" v-on:click="">Retar</button>
 
 <!-- Modal: modalCart -->
 <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,16 +148,19 @@ body, html {
 
                 <div class="container" id="usuarios">
                     <br>
-                    <div class="row" v-for="usuario in mensajejson">
+                    <div>
+                        <input type="text" placeholder="Buscar Usuario" class="form-control" v-model="name">
+                    </div>
+                    <div class="row" v-for="user in buscarusuario">
                         <div class="col-md-2"></div>
-                        <div class="col-md-4" v-if="usuario.IDUsuario != <?php echo $idusuario ?>">
+                        <div class="col-md-4" v-if="user.IDUsuario != <?php echo $idusuario ?>">
                         <br>
-                            <h3 class="text-center"><b>{{usuario.NombreUsuario}}</b></h3>
+                            <h3 class="text-center"><b>{{user.NombreUsuario}}</b></h3>
                         </div>
-                        <div class="col-md-4" v-if="usuario.IDUsuario != <?php echo $idusuario ?>">
-                            <form action="" method="">
-                                <button name="ingresar" class="btn btn-small my-4 btn-block purple darken-3" type="submit" style="">Retar</button>
-                                <input type="hidden" name="idretador" v-bind:value="usuario.IDUsuario">
+                        <div class="col-md-4" v-if="user.IDUsuario != <?php echo $idusuario ?>">
+                            <form action="retar.php" method="post">
+                                <button name="retar" class="btn btn-small my-4 btn-block purple darken-3" type="submit" style="">Retar</button>
+                                <input type="hidden" name="idretador" v-bind:value="user.IDUsuario">
                             </form>
                         </div>
                         <div class="col-md-4"></div>
@@ -201,10 +222,9 @@ body, html {
                                 <input type="text" class="form-control" v-model="msg">
                             </div>
                             <div class="modal-footer justify-content-center">
-                                <a type="submit" class="btn btn-primary waves-effect waves-light purple darken-3">Enviar
-                                <i class="fa fa-paper-plane ml-1"></i>
-                                </a>
-                                <a type="button" class="btn btn-outline-primary waves-effect purple darken-3" data-dismiss="modal">Cancel</a>
+                                <button type="submit" class="btn purple darken-3">Enviar
+                                </button>
+                                <button type="button" class="btn purple darken-3" data-dismiss="modal">Cancel</button>
                             </div>
                         </form>
                         
@@ -221,10 +241,10 @@ body, html {
     </div>
     <!-- Modal: modalPoll -->
     <!--fin body-->
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+    
+    <br>
     <!-- Footer -->
-    <footer class="page-footer font-small purple darken-3">
+    <footer class="page-footer font-small purple darken-3 fixed-bottom">
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2018 Copyright:
           <a href="#">GamerChallenge</a>
@@ -246,7 +266,6 @@ body, html {
     <!--LIBRERIAS JS-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
     <script src="js/vue-resource.min.js"></script>
-    <script src="js/axios.min.js"></script>
     <script src="js/vuesala.js"></script>	
     <script src="js/vueusuarios.js"></script>	
     <script>
