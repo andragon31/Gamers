@@ -4,7 +4,7 @@ new Vue({
     created: function() {
         //this.getmensajes();
         this.traerdatos();
-        this.buscarusuario();
+        //this.buscarusuario();
         //this.timer = setInterval(this.traerdatos, 1000);
         //this.timer = setInterval(this.buscarusuario, 1000);
         //this.timer = setInterval(this.enviarmensaje, 1000);

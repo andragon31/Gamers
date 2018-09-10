@@ -21,11 +21,6 @@ new Vue({
                 this.mensajejson = response.data;
             });
         },
-        addmsg: function ()
-        {
-            this.mensajes.push(this.msg);
-            this.msg = '';
-        },
         enviarmensaje: function(msg) 
         {
             this.$http.post('php/guardarmensaje2.php',{
@@ -47,7 +42,11 @@ new Vue({
             }, function(){
                 alert("error");
             });
+        },
+        scrollToEnd() {
+            var container = document.querySelector("#chatscroll");
+            var scrollHeight = container.scrollHeight;
+            container.scrollTop = scrollHeight;
         }
-
     }
 });
