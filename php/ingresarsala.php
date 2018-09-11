@@ -21,7 +21,7 @@
         }
         else
         {
-            var_dump($idsala, $idusuario);
+            //var_dump($idsala, $idusuario);
             $sql ="INSERT INTO UsuariosxSala (IDUsuario, IDSala) VALUES ('$idusuario', '$idsala')";
             $resultado = mysqli_query($link, $sql);  
             

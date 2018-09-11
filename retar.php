@@ -160,7 +160,8 @@ body, html {
     <!--body-->
     <!-- Card -->
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-right: 45px;">
+            <div class="col-md-1"></div>
             <div class="card col-md-5 offset-md-1 col-lg-3 responsive text-center">
                 <!-- Card image -->
                 <img class="card-img-top respnsive-img" src="<?php echo $imgperfil ?>" alt="Card image cap">
@@ -186,6 +187,21 @@ body, html {
                     <h4 class="card-title white-text"><a><b><?php echo $nombreretado ?></b></a></h4>
                 </div>
             </div>
+        </div>
+        <br>
+        <div class="row">
+        <form action="php/solicitudreto.php" method="post" class="col-md-2 offset-md-5">
+            <div>
+                <input type="number" name="valorapuesta" placeholder="Valor de la apuesta $">
+            </div>
+            <input type="hidden" name="idretador" value="<?php echo $idusuario ?>">
+            <input type="hidden" name="idretado" value="<?php echo $iduserreto ?>">
+            <input type="hidden" name="idsala" value="<?php echo $idsala ?>">
+            <br>
+            <div class="col-md-2 offset-md-1">
+            <button name="retar" class="btn btn-info purple darken-3 center" type="submit">Retar</button>
+            </div>
+        </form>
         </div>
     </div>
     <!-- Card -->

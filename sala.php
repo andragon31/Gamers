@@ -120,24 +120,39 @@ body, html {
     <!--body-->
     <div class="container center-items">
         <div class="row">
-            <div class="col-md-3">
-                
-                <div class="container white">
-                    <h5 class="card-header info-color white-text text-center py-6 px-3 purple darken-3" style="margin-left:-15px; margin-right:-15px;">
+            <div class="col-md-3" id="solicitudes">
+                <div class="container white" >
+                <h5 class="card-header info-color white-text text-center py-6 px-3 purple darken-3" style="margin-left:-15px; margin-right:-15px;">
                         <strong>Solicitudes</strong>
                     </h5>
                     <br>
+                    
                     <div>
                         <input type="text" placeholder="Buscar Usuario" class="form-control border-secondary" v-model="name">
                     </div>
-                    <div class="row" v-for="user in buscarusuario">
-                        <div class="col-md-4 center" v-if="user.IDUsuario != <?php echo $idusuario ?>">
-                            <form action="retar.php" method="post">
-                                <button name="retar" class="btn btn-small my-2 btn-block purple darken-3 center" type="submit" style="width:130px;">{{user.NombreUsuario}}</button>
-                                <input type="hidden" name="idretador" v-bind:value="user.IDUsuario">
-                            </form>
+                    <div style="width: 400px; max-height:900px; overflow: scroll; background: white; margin-bottom: 30px;">
+                    
+                        <div class="row center" v-for="user in buscarusuario">
+                            <div class="col-md-12 center" v-if="user.IDUsuario != <?php echo $idusuario ?>"> 
+                                <div v-if="mensajejson.EstatusSolicitud == Pendiente">
+                                    <div class="row center">
+                                        <div class="col-md-5 center offset-md-1">
+                                            <h4 style="padding-top:17px;">{{user.NombreUsuario}}</h4>
+                                        </div>
+                                        <div class="col-md-5 center">
+                                            <form v-on:submit.prevent="enviarrespuesta">
+                                                <input type="hidden" name="idretador" v-bind:value="user.IDUsuario">
+                                                <button title="Aceptar Solicitud" name="aceptar" type="submit" class="btn btn-success px-3"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                <button title="Rechazar Solicitud" name="rechazar" type="submit" class="btn btn-danger px-3"><i class="fa fa-close" aria-hidden="true"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-4"></div>
                     </div>
                 </div>
             
@@ -184,7 +199,7 @@ body, html {
             <div class="col-md-3">
                 <div class="container white" id ="usuarios">
                     <h5 class="card-header info-color white-text text-center py-6 px-3 purple darken-3" style="margin-left:-15px; margin-right:-15px;">
-                        <strong>Solicitudes</strong>
+                        <strong>Usuarios en la sala</strong>
                     </h5>
                     <br>
                     <div>
@@ -238,7 +253,8 @@ body, html {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
     <script src="js/vue-resource.min.js"></script>
     <script src="js/vuesala.js"></script>	
-    <script src="js/vueusuarios.js"></script>	
+    <script src="js/vueusuarios.js"></script>
+    <script src="js/vuesolicitudes.js"></script>		
     <script>
         // SideNav Button Initialization
         $(".button-collapse").sideNav();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2018 a las 20:07:02
+-- Tiempo de generación: 12-09-2018 a las 00:49:49
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -122,7 +122,37 @@ INSERT INTO `mensajesxsala` (`IDMensajesxSala`, `IDSala`, `IDUsuarioEmisor`, `Me
 (33, 2, 4, 'Call of Duty', '31/08/2018 10:11am'),
 (34, 2, 1, 'minchof duty', '31/08/2018 10:11am'),
 (35, 3, 4, 'Smash', '31/08/2018 10:11am'),
-(36, 3, 1, 'mmm cabezazo!!', '31/08/2018 10:11am');
+(36, 3, 1, 'mmm cabezazo!!', '31/08/2018 10:11am'),
+(37, 3, 1, 'que ondas', '06/09/2018 4:13pm'),
+(38, 1, 1, 'que ondas', '06/09/2018 4:27pm'),
+(39, 3, 5, 'que ondas chavalos', '06/09/2018 5:07pm'),
+(40, 1, 5, 'que ondas', '07/09/2018 9:21am'),
+(41, 1, 5, 'hola', '07/09/2018 9:39am'),
+(42, 1, 5, 'mordo es el mejor', '07/09/2018 9:43am'),
+(43, 1, 6, 'que tal quien juega', '07/09/2018 10:17am'),
+(44, 1, 1, 'yo juego men', '07/09/2018 10:18am'),
+(45, 1, 1, '10$', '07/09/2018 10:18am'),
+(46, 1, 6, 'dale', '07/09/2018 10:19am'),
+(47, 1, 1, 'hola', '07/09/2018 2:22pm'),
+(48, 1, 1, 'hola', '07/09/2018 4:24pm'),
+(49, 1, 1, 'hi', '07/09/2018 4:27pm'),
+(50, 1, 1, 'hola', '07/09/2018 4:27pm'),
+(51, 1, 1, 'hola', '07/09/2018 4:39pm'),
+(52, 1, 1, 'hola', '07/09/2018 4:52pm'),
+(53, 1, 1, 'hi', '07/09/2018 4:53pm'),
+(54, 1, 1, 'hi', '07/09/2018 4:56pm'),
+(55, 1, 1, 'hello', '10/09/2018 1:57pm'),
+(56, 1, 1, 'mordo', '10/09/2018 1:58pm'),
+(57, 1, 1, 'hola', '10/09/2018 2:04pm'),
+(58, 1, 1, 'guts', '10/09/2018 2:10pm'),
+(59, 1, 1, 'kyrie', '10/09/2018 2:12pm'),
+(60, 1, 1, 'nero', '10/09/2018 2:12pm'),
+(61, 1, 1, 'vergil', '10/09/2018 2:15pm'),
+(62, 1, 1, 'que tal?', '10/09/2018 3:00pm'),
+(63, 1, 1, 'hola', '10/09/2018 3:04pm'),
+(64, 1, 1, 'hi', '10/09/2018 3:05pm'),
+(65, 1, 1, 'hola', '10/09/2018 3:07pm'),
+(66, 1, 1, 'hola', '11/09/2018 9:27am');
 
 -- --------------------------------------------------------
 
@@ -147,6 +177,34 @@ INSERT INTO `sala` (`IDSala`, `NombreSala`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `solicitudreto`
+--
+
+CREATE TABLE `solicitudreto` (
+  `IDSolicitudReto` int(11) NOT NULL,
+  `IDSala` int(11) NOT NULL,
+  `IDUsuarioRetador` int(11) NOT NULL,
+  `IDUsuarioRetado` int(11) NOT NULL,
+  `EstatusSolicitud` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `ValorApuesta` int(11) NOT NULL,
+  `EstatusRetador` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `EstatusRetado` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `solicitudreto`
+--
+
+INSERT INTO `solicitudreto` (`IDSolicitudReto`, `IDSala`, `IDUsuarioRetador`, `IDUsuarioRetado`, `EstatusSolicitud`, `ValorApuesta`, `EstatusRetador`, `EstatusRetado`) VALUES
+(2, 1, 1, 2, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
+(3, 1, 1, 3, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
+(4, 1, 1, 4, 'Pendiente', 20, 'Pendiente', 'Pendiente'),
+(5, 1, 1, 5, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
+(6, 1, 1, 6, 'Pendiente', 5, 'Pendiente', 'Pendiente');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -165,7 +223,9 @@ INSERT INTO `usuario` (`IDUsuario`, `NombreUsuario`, `ClaveUsuario`, `EmailUsuar
 (1, 'andragon', 'horda10', 'andragon@hotmail.com'),
 (2, 'adra', 'horda10', 'adra@hotmail.com'),
 (3, 'mordo', 'horda10', 'mordo@gmail.com'),
-(4, 'Saul', 'Gamer2018', 'saullainez@hotmail.es');
+(4, 'Saul', 'Gamer2018', 'saullainez@hotmail.es'),
+(5, 'andrea', 'anagui', 'andrea@gmail.com'),
+(6, 'ruben', '123', 'rantunez@somnia-ware.com');
 
 -- --------------------------------------------------------
 
@@ -192,7 +252,11 @@ INSERT INTO `usuariosxsala` (`IDUsuariosxSala`, `IDSala`, `IDUsuario`) VALUES
 (10, 3, 1),
 (11, 1, 4),
 (12, 2, 4),
-(13, 3, 4);
+(13, 3, 4),
+(14, 3, 5),
+(15, 2, 5),
+(16, 1, 5),
+(17, 1, 6);
 
 --
 -- Índices para tablas volcadas
@@ -225,6 +289,15 @@ ALTER TABLE `mensajesxsala`
 --
 ALTER TABLE `sala`
   ADD PRIMARY KEY (`IDSala`);
+
+--
+-- Indices de la tabla `solicitudreto`
+--
+ALTER TABLE `solicitudreto`
+  ADD PRIMARY KEY (`IDSolicitudReto`),
+  ADD KEY `IDSala` (`IDSala`),
+  ADD KEY `IDUsuarioRetador` (`IDUsuarioRetador`),
+  ADD KEY `IDUsuarioRetado` (`IDUsuarioRetado`);
 
 --
 -- Indices de la tabla `usuario`
@@ -260,7 +333,7 @@ ALTER TABLE `mensajesindividuales`
 -- AUTO_INCREMENT de la tabla `mensajesxsala`
 --
 ALTER TABLE `mensajesxsala`
-  MODIFY `IDMensajesxSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `IDMensajesxSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT de la tabla `sala`
@@ -269,16 +342,22 @@ ALTER TABLE `sala`
   MODIFY `IDSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `solicitudreto`
+--
+ALTER TABLE `solicitudreto`
+  MODIFY `IDSolicitudReto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IDUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuariosxsala`
 --
 ALTER TABLE `usuariosxsala`
-  MODIFY `IDUsuariosxSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `IDUsuariosxSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
@@ -297,6 +376,14 @@ ALTER TABLE `mensajesindividuales`
 ALTER TABLE `mensajesxsala`
   ADD CONSTRAINT `mensajesxsala_ibfk_1` FOREIGN KEY (`IDUsuarioEmisor`) REFERENCES `usuario` (`IDUsuario`),
   ADD CONSTRAINT `mensajesxsala_ibfk_2` FOREIGN KEY (`IDSala`) REFERENCES `sala` (`IDSala`);
+
+--
+-- Filtros para la tabla `solicitudreto`
+--
+ALTER TABLE `solicitudreto`
+  ADD CONSTRAINT `solicitudreto_ibfk_1` FOREIGN KEY (`IDSala`) REFERENCES `sala` (`IDSala`),
+  ADD CONSTRAINT `solicitudreto_ibfk_2` FOREIGN KEY (`IDUsuarioRetador`) REFERENCES `usuario` (`IDUsuario`),
+  ADD CONSTRAINT `solicitudreto_ibfk_3` FOREIGN KEY (`IDUsuarioRetado`) REFERENCES `usuario` (`IDUsuario`);
 
 --
 -- Filtros para la tabla `usuariosxsala`
