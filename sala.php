@@ -153,10 +153,10 @@ body, html {
                                                         <h4 style="padding-top:17px;">{{user.NombreUsuario}}</h4>
                                                     </div>
                                                     <div class="col-md-5 center">
-                                                        <form action="retar.php" method="post">
-                                                        <button type="button" title="Aceptar Solicitud" class="btn btn-success px-3"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                        <button type="button" title="Rechazar Solicitud" class="btn btn-danger px-3"><i class="fa fa-close" aria-hidden="true"></i></button>
-                                                            <input type="hidden" name="idretador" v-bind:value="user.IDUsuarioRetador">
+                                                        <form action="php/aceptarsolicitud.php" method="post">
+                                                        <button name="aceptar" type="submit" title="Aceptar Solicitud" class="btn btn-success px-3"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                        <button name="rechazar" type="submit" title="Rechazar Solicitud" class="btn btn-danger px-3"><i class="fa fa-close" aria-hidden="true"></i></button>
+                                                            <input type="hidden" name="idsolicitud" v-bind:value="user.IDSolicitudReto">
                                                         </form>
                                                     </div>
                                                 </div>
@@ -182,9 +182,9 @@ body, html {
                                                         <h4 style="padding-top:17px;">{{user.NombreUsuario}}</h4>
                                                     </div>
                                                     <div class="col-md-5 center">
-                                                        <form action="retar.php" method="post">
-                                                            <button name="retar" class="btn btn-small btn-danger center" type="submit" style="width:150px;">Cancelar</button>
-                                                            <input type="hidden" name="idretador" v-bind:value="user.IDUsuarioRetador">
+                                                        <form action="php/aceptarsolicitud.php" method="post">
+                                                            <button name="cancelar" class="btn btn-small btn-danger center" type="submit" style="width:150px;">Cancelar</button>
+                                                            <input type="hidden" name="idsolicitud" v-bind:value="user.IDSolicitudReto">
                                                         </form>
                                                     </div>
                                                 </div>
