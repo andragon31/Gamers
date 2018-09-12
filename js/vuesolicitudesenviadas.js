@@ -1,6 +1,6 @@
 var urlmensajes = 'https://localhost:8080/GCCHAT/php/solicitudesretos.php';
 new Vue({
-    el: '#solicitudes',
+    el: '#solicitudesenviadas',
     created: function() {
         //this.getmensajes();
         this.traerdatos();
@@ -20,7 +20,7 @@ new Vue({
     methods: {
         traerdatos: function(datos)
         {
-            this.$http.post('php/solicitudesderetos.php',{
+            this.$http.post('php/solicitudesenviadas.php',{
                 datos: this.datos
             }).then(function(response){
                 this.mensajejson = response.data;

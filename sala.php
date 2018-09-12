@@ -120,36 +120,77 @@ body, html {
     <!--body-->
     <div class="container center-items">
         <div class="row">
-            <div class="col-md-3" id="solicitudes">
+            <div class="col-md-3">
                 <div class="container white" >
-                <h5 class="card-header info-color white-text text-center py-6 px-3 purple darken-3" style="margin-left:-15px; margin-right:-15px;">
+                    <h5 class="card-header info-color white-text text-center py-6 px-3 purple darken-3" style="margin-left:-15px; margin-right:-15px;">
                         <strong>Solicitudes</strong>
                     </h5>
                     <br>
-                    
-                    <div>
-                        <input type="text" placeholder="Buscar Usuario" class="form-control border-secondary" v-model="name">
-                    </div>
-                    <div style="width: 400px; max-height:900px; overflow: scroll; background: white; margin-bottom: 30px;">
-                    
-                        <div class="row center" v-for="user in buscarusuario">
-                            <div class="col-md-12 center" v-if="user.IDUsuario != <?php echo $idusuario ?>"> 
-                                <div v-if="mensajejson.EstatusSolicitud == Pendiente">
-                                    <div class="row center">
-                                        <div class="col-md-5 center offset-md-1">
-                                            <h4 style="padding-top:17px;">{{user.NombreUsuario}}</h4>
-                                        </div>
-                                        <div class="col-md-5 center">
-                                            <form v-on:submit.prevent="enviarrespuesta">
-                                                <input type="hidden" name="idretador" v-bind:value="user.IDUsuario">
-                                                <button title="Aceptar Solicitud" name="aceptar" type="submit" class="btn btn-success px-3"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                <button title="Rechazar Solicitud" name="rechazar" type="submit" class="btn btn-danger px-3"><i class="fa fa-close" aria-hidden="true"></i></button>
-                                            </form>
+                    <div class="classic-tabs">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active purple darken-3 white-text" id="recibidas-tab" data-toggle="tab" href="#recibidas" role="tab" aria-controls="recibidas" aria-selected="true">Solicitudes Recibidas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pink darken-3 white-text" id="enviadas-tab" data-toggle="tab" href="#enviadas" role="tab" aria-controls="enviadas" aria-selected="false">Solicitudes Enviadas</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="recibidas" role="tabpanel" aria-labelledby="recibidas-tab" style="height:442px;">
+                                <br>
+                                <div class="container white" id ="solicitudesrecibidas">
+                                    <br>
+                                    <div>
+                                        <input type="text" placeholder="Buscar Usuario" class="form-control border-secondary" v-model="name">
+                                    </div>
+                                    <br>
+                                    <div style="width: 370px; height:310px; max-height:800px; overflow: scroll; background: white; margin-bottom: 20px;">
+                                    
+                                        <div class="row center" v-for="user in buscarusuario">
+                                            <div class="col-md-12 center" v-if="user.IDUsuarioRetado == <?php echo $idusuario ?>"> 
+                                                <div class="row center" style="padding-left:">
+                                                    <div class="col-md-5 center offset-md-1">
+                                                        <h4 style="padding-top:17px;">{{user.NombreUsuario}}</h4>
+                                                    </div>
+                                                    <div class="col-md-5 center">
+                                                        <form action="retar.php" method="post">
+                                                        <button type="button" title="Aceptar Solicitud" class="btn btn-success px-3"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                        <button type="button" title="Rechazar Solicitud" class="btn btn-danger px-3"><i class="fa fa-close" aria-hidden="true"></i></button>
+                                                            <input type="hidden" name="idretador" v-bind:value="user.IDUsuarioRetador">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div v-else>
-
+                            </div>
+                            <div class="tab-pane fade" id="enviadas" role="tabpanel" aria-labelledby="enviadas-tab" style="height:442px;">
+                            <br>
+                            <div class="container white" id ="solicitudesenviadas">
+                                    <br>
+                                    <div>
+                                        <input type="text" placeholder="Buscar Usuario" class="form-control border-secondary" v-model="name">
+                                    </div>
+                                    <br>
+                                    <div style="width: 370px; height:310px; max-height:800px; overflow: scroll; background: white; margin-bottom: 20px;">
+                                    
+                                        <div class="row center" v-for="user in buscarusuario">
+                                            <div class="col-md-12 center" v-if="user.IDUsuarioRetador == <?php echo $idusuario ?>"> 
+                                                <div class="row center" style="padding-left:">
+                                                    <div class="col-md-5 center offset-md-1">
+                                                        <h4 style="padding-top:17px;">{{user.NombreUsuario}}</h4>
+                                                    </div>
+                                                    <div class="col-md-5 center">
+                                                        <form action="retar.php" method="post">
+                                                            <button name="retar" class="btn btn-small btn-danger center" type="submit" style="width:150px;">Cancelar</button>
+                                                            <input type="hidden" name="idretador" v-bind:value="user.IDUsuarioRetador">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +238,7 @@ body, html {
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="container white" id ="usuarios">
+                <div class="container white" id ="usuarios" style="height:555px;">
                     <h5 class="card-header info-color white-text text-center py-6 px-3 purple darken-3" style="margin-left:-15px; margin-right:-15px;">
                         <strong>Usuarios en la sala</strong>
                     </h5>
@@ -205,7 +246,8 @@ body, html {
                     <div>
                         <input type="text" placeholder="Buscar Usuario" class="form-control border-secondary" v-model="name">
                     </div>
-                    <div style="width: 400px; max-height:800px; overflow: scroll; background: white; margin-bottom: 20px;">
+                    <br>
+                    <div style="width 400px; height:395px; max-height:800px; overflow:scroll; background:white; margin-bottom:20px;">
                     
                         <div class="row center" v-for="user in buscarusuario">
                             <div class="col-md-12 center" v-if="user.IDUsuario != <?php echo $idusuario ?>"> 
@@ -224,7 +266,6 @@ body, html {
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -254,7 +295,8 @@ body, html {
     <script src="js/vue-resource.min.js"></script>
     <script src="js/vuesala.js"></script>	
     <script src="js/vueusuarios.js"></script>
-    <script src="js/vuesolicitudes.js"></script>		
+    <script src="js/vuesolicitudesenviadas.js"></script>		
+    <script src="js/vuesolicitudesrecibidas.js"></script>		
     <script>
         // SideNav Button Initialization
         $(".button-collapse").sideNav();
