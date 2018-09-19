@@ -72,7 +72,7 @@
 
                         <!-- Register -->
                         <p class="white-text">Ya eres miembro?
-                            <a class="purple-text" href="login.html">Ingresar</a>
+                            <a class="purple-text" href="login.php">Ingresar</a>
                         </p>
                     </form>
                         <!-- Default form register -->

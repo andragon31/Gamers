@@ -118,6 +118,75 @@ body, html {
 </header>
 <br><br><br><br><br><br><br>
     <!--body-->
+
+<button  type="button" class="btn btn-primary transparent" data-toggle="modal" data-target="#modalPoll">Launch modal</button>
+<!-- Modal: modalPoll -->
+<div class="modal fade right" id="modalPoll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content rgba-black-strong">
+      <!--Header-->
+      <div class="modal-header purple darken-4">
+        <p class="heading lead"><b>Bandeja de mensajes privados</b>
+        </p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">×</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-envelope-o fa-4x mb-3 animated rotateIn"></i>
+        </div>
+
+        <div id="privados" class="container border-dark">
+            <div class="row">
+                <div class="col-md-2"></div>
+                    <div class="col-ms-3 border-dark">
+                    <hr>
+                        <div id="chatscroll" class="container rgba-black-strong chatscroll" style="width: 350px; max-height: 500px; overflow: scroll; margin-bottom: 20px;">
+                            <div v-for="item in mensajejson">
+                            <hr>
+                                <div class="container mensaje darker text-right deep-purple lighten-1 text-white" id="cont-mensaje" v-if="item.IDUsuarioEmisor == <?php echo $idusuario ?>">
+                                    <p style="font-size:15px;"><b>{{item.NombreUsuario}}</b>: {{item.Mensaje}}</p>
+                                    <span class="time-right" style="font-size:10px;">{{item.Fecha}}</span>
+                                </div>
+                                <div class="container whiten text-left pink darken-4 text-white" id="cont-mensaje" v-else>
+                                    <p style="font-size:15px;"><b>{{item.NombreUsuario}}</b>: {{item.Mensaje}}</p>
+                                    <span class="time-left" style="font-size:10px;">{{item.Fecha}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <form v-on:submit.prevent="enviarmensaje">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-secondary" v-model="msg" placeholder="Mensaje">
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <div class="col-10"></div>
+                            </div>
+                        </form>     
+                    </div>
+                </div>
+            </div>
+        
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="btn purple darken-4 white-text waves-effect waves-light">Send
+          <i class="fa fa-paper-plane ml-1"></i>
+        </a>
+        <a type="button" class="btn pink darken-1 white-text waves-effect" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal: modalPoll -->
+
     <div class="container center-items">
         <div class="row">
             <div class="col-md-3">
@@ -149,8 +218,11 @@ body, html {
                                         <div class="row center" v-for="user in buscarusuario">
                                             <div class="col-md-12 center" v-if="user.IDUsuarioRetado == <?php echo $idusuario ?>"> 
                                                 <div class="row center" style="padding-left:">
-                                                    <div class="col-md-5 center offset-md-1">
+                                                    <div class="col-md-4 center offset-md-1">
                                                         <h4 style="padding-top:17px;">{{user.NombreUsuario}}</h4>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <h4 style="padding-top:17px;">${{user.ValorApuesta}}</h4>
                                                     </div>
                                                     <div class="col-md-5 center">
                                                         <form action="php/aceptarsolicitud.php" method="post">
@@ -308,6 +380,7 @@ body, html {
     <script src="js/vueusuarios.js"></script>
     <script src="js/vuesolicitudesenviadas.js"></script>		
     <script src="js/vuesolicitudesrecibidas.js"></script>		
+    <script src="js/vueprivado.js"></script>		
     <script>
         // SideNav Button Initialization
         $(".button-collapse").sideNav();

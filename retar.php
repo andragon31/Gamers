@@ -191,8 +191,8 @@ body, html {
         <br>
         <div class="row">
         <form action="php/solicitudreto.php" method="post" class="col-md-2 offset-md-5">
-            <div>
-                <input type="number" name="valorapuesta" placeholder="Valor de la apuesta $">
+            <div class="offset-md-3">
+                <input style="width:100px;" type="number" name="valorapuesta" placeholder="Precio $">
             </div>
             <input type="hidden" name="idretador" value="<?php echo $idusuario ?>">
             <input type="hidden" name="idretado" value="<?php echo $iduserreto ?>">
