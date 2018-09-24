@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2018 a las 00:49:49
+-- Tiempo de generación: 25-09-2018 a las 00:36:13
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -200,7 +200,14 @@ INSERT INTO `solicitudreto` (`IDSolicitudReto`, `IDSala`, `IDUsuarioRetador`, `I
 (3, 1, 1, 3, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
 (4, 1, 1, 4, 'Pendiente', 20, 'Pendiente', 'Pendiente'),
 (5, 1, 1, 5, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
-(6, 1, 1, 6, 'Pendiente', 5, 'Pendiente', 'Pendiente');
+(7, 1, 1, 6, 'Cancelado', 10, 'Pendiente', 'Pendiente'),
+(8, 1, 2, 1, 'Rechazado', 10, 'Pendiente', 'Pendiente'),
+(9, 1, 2, 3, 'Pendiente', 5, 'Pendiente', 'Pendiente'),
+(10, 2, 1, 2, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
+(11, 1, 2, 6, 'Pendiente', 20, 'Pendiente', 'Pendiente'),
+(12, 2, 2, 1, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
+(13, 1, 1, 6, 'Pendiente', 10, 'Pendiente', 'Pendiente'),
+(14, 1, 2, 1, 'Pendiente', 20, 'Pendiente', 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -256,7 +263,8 @@ INSERT INTO `usuariosxsala` (`IDUsuariosxSala`, `IDSala`, `IDUsuario`) VALUES
 (14, 3, 5),
 (15, 2, 5),
 (16, 1, 5),
-(17, 1, 6);
+(17, 1, 6),
+(18, 3, 2);
 
 --
 -- Índices para tablas volcadas
@@ -345,7 +353,7 @@ ALTER TABLE `sala`
 -- AUTO_INCREMENT de la tabla `solicitudreto`
 --
 ALTER TABLE `solicitudreto`
-  MODIFY `IDSolicitudReto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `IDSolicitudReto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -357,7 +365,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuariosxsala`
 --
 ALTER TABLE `usuariosxsala`
-  MODIFY `IDUsuariosxSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `IDUsuariosxSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
