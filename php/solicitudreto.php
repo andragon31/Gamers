@@ -9,10 +9,10 @@
     if(isset($_POST['retar']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-        $idsala = $_POST['idsala'];
-        $idretador = $_POST['idretador'];
-        $idretado = $_POST['idretado'];
-        $valor = $_POST['valorapuesta'];
+        $idsala = mysqli_real_escape_string($link,$_POST['idsala']);
+        $idretador = mysqli_real_escape_string($link,$_POST['idretador']);
+        $idretado = mysqli_real_escape_string($link,$_POST['idretado']);
+        $valor = mysqli_real_escape_string($link,$_POST['valorapuesta']);
         //echo '<script>alert("'.$idretado.'")</script>';
 
         $contador = 0;

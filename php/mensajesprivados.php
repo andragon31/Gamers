@@ -1,7 +1,12 @@
 <?php
-
+    if (!isset ( $_SESSION ))
+    {
+        session_start ();
+    }
     include 'conexion.php';
     include 'ingresarsala.php';
+    include 'asignarid.php';
+    //include 'guardarprivados';
     //include 'ingresarsala.php'
     //setlocale(LC_ALL, 'es_ES');
     //date_default_timezone_set('America/Tegucigalpa');
@@ -11,11 +16,12 @@
     //date("d-m-Y (H:i:s)", $time);
     //var_dump(date("d-m-Y (H:i:s)", $time));
     
-    $idsala = $_SESSION['IDSala'];
+    $idemisor = $_SESSION['IDUsuario'];
+    $idreceptor = $_SESSION['IDPrivado'];
 
     
     //$result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala WHERE IDSala = '%s'",$idsala));
-    $result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala INNER JOIN Usuario ON MensajesxSala.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDSala = '%s' ORDER BY IDMensajesxSala ASC",$idsala));
+    $result = mysqli_query ($link, sprintf ( "SELECT * FROM Mensajesindividuales INNER JOIN Usuario ON Mensajesindividuales.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDUsuarioEmisor = '%s' and IDUsuarioReceptor = '%s' or IDUsuarioEmisor = '%s' and IDUsuarioReceptor = '%s' ORDER BY IDMensajesIndividuales ASC",$idemisor, $idreceptor, $idreceptor, $idemisor));
 
     $mensajes=array();
 

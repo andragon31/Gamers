@@ -145,7 +145,7 @@ body, html {
                     <a class="nav-link" href="principal.php">Salas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mi Cuenta</a>
+                    <a class="nav-link" href="micuenta.php">Mi Cuenta</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="php/logout.php">Cerrar Sesión</a>

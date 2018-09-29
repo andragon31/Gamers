@@ -37,14 +37,13 @@ body, html {
 }
 .bg {
     /* The image used */
-    background-image: url("img/play.png");
-
+    background-image: url("img/black.jpg");
+    background-repeat: repeat-y;
     /* Full height */
     height: 100%;
 
     /* Center and scale the image nicely */
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
 }
 </style>
@@ -58,7 +57,7 @@ body, html {
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="col-md-9">
+        <div class="col-md-8">
         </div>
         <div class="col">
         </div>
@@ -68,7 +67,7 @@ body, html {
                     <a class="nav-link" href="principal.php">Salas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mi Cuenta</a>
+                    <a class="nav-link" href="micuenta.php">Mi Cuenta</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="php/logout.php">Cerrar Sesión</a>
@@ -79,10 +78,11 @@ body, html {
 </header>
 <br><br><br><br><br><br><br>
     <!--body-->
+
     <!-- Card -->
     <div class="container">
         <div class="row">
-            <div class="card col-md-5 offset-md-1 col-lg-3 responsive">
+            <div class="card col-md-4 offset-md-1 col-lg-3 responsive block-example border border-secondary">
                 <!-- Card image -->
                 <img class="card-img-top respnsive-img" src="img/fifa.png" alt="Card image cap">
                 <!-- Card content -->
@@ -99,7 +99,7 @@ body, html {
                 </div>
             </div>
 
-            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive">
+            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive block-example border border-secondary">
                 <!-- Card image -->
                 <img class="card-img-top respnsive-img" src="img/cod2.png" alt="Card image cap">
                 <!-- Card content -->
@@ -116,7 +116,7 @@ body, html {
                 </div>
             </div>
 
-            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive">
+            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive block-example border border-secondary">
                 <!-- Card image -->
                 <img class="card-img-top respnsive-img" src="img/smash2.png" alt="Card image cap">
                 <!-- Card content -->
@@ -133,9 +133,62 @@ body, html {
                 </div>
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="card col-md-4 offset-md-1 col-lg-3 responsive block-example border border-secondary">
+                <!-- Card image -->
+                <img class="card-img-top respnsive-img" src="img/fortnitelogo.png" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a>FORTNITE</a></h4>
+                    <!-- Text -->
+                    <p class="card-text">Sala de apuestas online de Fortnite</p>
+                    <!-- Button -->
+                    <form action="php/ingresarsala.php" method="post">
+                        <input type="hidden" name="idsala" value="4">
+                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive block-example border border-secondary">
+                <!-- Card image -->
+                <img class="card-img-top respnsive-img" src="img/lollogo.png" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a>League of Legends</a></h4>
+                    <!-- Text -->
+                    <p class="card-text">Sala de apuestas online de League of Legends</p>
+                    <!-- Button -->
+                    <form action="php/ingresarsala.php" method="post">
+                        <input type="hidden" name="idsala" value="5">
+                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card col-md-5 offset-md-1 col-lg-3 offset-lg-1 responsive block-example border border-secondary">
+                <!-- Card image -->
+                <img class="card-img-top respnsive-img" src="img/clashlogo.png" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a>Clash of Clans</a></h4>
+                    <!-- Text -->
+                    <p class="card-text">Sala de apuestas online de Clash of Clans</p>
+                    <!-- Button -->
+                    <form action="php/ingresarsala.php" method="post">
+                        <input type="hidden" name="idsala" value="6">
+                    <button name="ingresar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Card -->
-
+    <br><br>
 
     <!--fin body-->
 

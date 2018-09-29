@@ -1,4 +1,4 @@
-var urlmensajes = 'https://localhost:8080/GCCHAT/php/mensajes.php';
+var urlmensajes = 'https://localhost/GCCHAT/php/mensajes.php';
 new Vue({
     el: '#main',
     created: function() {

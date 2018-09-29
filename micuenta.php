@@ -6,11 +6,24 @@
     include 'php/conexion.php';
     if (!isset($_SESSION['IDUsuario']))
     {
+        echo '<script> window.location = "principal.php";</script>';
     }
     else
     {
-      echo '<script> window.location = "principal.php";</script>';
+      
     }
+
+    $result = mysqli_query ( $link, sprintf ("SELECT * FROM Usuario WHERE IDUsuario = '%s'", $_SESSION['IDUsuario']));
+
+
+    if (mysqli_num_rows($result) != 0) 
+    {
+        $row = mysqli_fetch_array($result);
+        $nombre = $row['NombreUsuario'];
+        $clave = $row['ClaveUsuario'];
+        $email = $row['EmailUsuario'];
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="full-height">
@@ -34,55 +47,58 @@
 
     <!--Main Navigation-->
 <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#"><img style="width:100px; margin: -20px;" class="responsive-img" src="img/gclogo.png"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar rgba-indigo-light">
+        <a class="navbar-brand" href="principal.php"><img style="width:100px; margin: -20px;" class="responsive-img" src="img/gclogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="col-md-8">
+        </div>
+        <div class="col">
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="principal.php">Salas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="micuenta.php">Mi Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="php/logout.php">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     
         <div class="view intro-2">
             <div class="full-bg-img">
                 <div class="mask rgba-black-strong flex-center">
                     
                 <!-- Default form register -->
-                    <form method="post" action="php/registro.php" class="text-center border border-light p-5 rgba-black-strong needs-validation" novalidate>
+                    <form class="text-center border border-light p-5 rgba-black-strong needs-validation" novalidate>
 
-                        <p class="h4 mb-4 white-text">Registrarse</p>
-                            
-                        <div class="form-row mb-4">
-                            <div class="col">
-                                <!-- First name -->
-                                <input type="text" name="nombrer" id="defaultRegisterFormFirstName nombrer" class="form-control" placeholder="Nombre">
-                                <div class="valid-tooltip">
-                                    Looks good!
-                                </div>
-                            </div>
+                        <p class="h4 mb-4 white-text">Mi cuenta</p>                    
+
+                        <!-- Nombre -->
+                        <div class="form-group">
+                            <input type="text" name="nombre" class="form-control disabled" value="<?php echo $nombre ?>">
                         </div>
-                            
+
                         <!-- E-mail -->
                         <div class="form-group">
-                            <input type="email" name="email" id="inputValidationEx" class="form-control validate" placeholder="Email">
+                            <input type="email" name="email" class="form-control disabled" value="<?php echo $email ?>">
                         </div>
 
                         <!-- Password -->
-                        <input type="password" name="claver" id="defaultRegisterFormPassword claver" class="form-control" placeholder="Contraseña" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                        <input type="text" name="clave" class="form-control disabled" value="<?php echo $clave ?>">
                         <br>
 
-                        <!--confirmar Password -->
-                        <input type="password" name="claveconf" id="defaultRegisterFormPassword claveconf" class="form-control" placeholder="Confirmar contraseña" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                        <br>
                         <!-- Phone number -->
 
                         <!-- Sign up button -->
-                        <button name="registro" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Registrarse</button>
+                        <a href="cambiarclave.php" class="btn btn-info my-4 btn-block purple darken-3">Cambiar Contraseña</a>
 
-                        <!-- Register -->
-                        <p class="white-text">Ya eres miembro?
-                            <a class="purple-text" href="login.php">Ingresar</a>
-                        </p>
                     </form>
                         <!-- Default form register -->
                 </div>

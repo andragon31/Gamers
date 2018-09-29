@@ -6,7 +6,7 @@
     if(isset($_POST['message']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-        $msg = $_POST['message'];
+        $msg = mysqli_real_escape_string($link,$_POST['message']);
         $idsala = $_SESSION['IDSala'];
         $idusuario = $_SESSION['IDUsuario'];
 

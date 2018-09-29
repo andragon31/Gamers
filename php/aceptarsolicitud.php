@@ -10,7 +10,7 @@ if(isset($_POST['aceptar']))
 {   
     
     
-    $idsolicitud = mysqli_real_escape_string ( $link, $_POST ['idsolicitud']);
+    $idsolicitud = mysqli_real_escape_string ($link, $_POST ['idsolicitud']);
     
     //echo '<script>alert("'.$idsolicitud.'")</script>';
     $result = mysqli_query ( $link, sprintf ("UPDATE SolicitudReto SET EstatusSolicitud = 'Aceptado' WHERE IDSolicitudReto = '%s'", $idsolicitud));

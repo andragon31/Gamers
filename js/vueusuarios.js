@@ -1,4 +1,4 @@
-var urlmensajes = 'https://localhost:8080/GCCHAT/php/usuarios.php';
+var urlmensajes = 'https://localhost/GCCHAT/php/usuarios.php';
 new Vue({
     el: '#usuarios',
     created: function() {
@@ -23,6 +23,16 @@ new Vue({
                 datos: this.datos
             }).then(function(response){
                 this.mensajejson = response.data;
+            }, function(){
+                alert("error");
+            });
+        },
+        asignarid: function(id) 
+        {
+            this.$http.post('php/asignarid.php',{
+                idemisor: id
+            }).then(function(response){
+                console.log("envio exitoso");
             }, function(){
                 alert("error");
             });

@@ -1,22 +1,26 @@
 <?php
+    if (!isset ( $_SESSION ))
+    {
+        session_start ();
+    }
     include 'conexion.php';
     include 'ingresarsala.php';
-
-    $_POST = json_decode(file_get_contents('php://input'), true);
+    include 'asignarid.php';
+    
     if(isset($_POST['message']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-        $msg = $_POST['message'];
-        $idsala = $_SESSION['IDSala'];
-        $idusuario = $_SESSION['IDUsuario'];
+        $msg = mysqli_real_escape_string($link,$_POST['message']);
+        $idreceptor = $_SESSION['IDPrivado'];
+        $idemisor = $_SESSION['IDUsuario'];
         setlocale(LC_ALL, 'es_ES');
         date_default_timezone_set('America/Tegucigalpa');
         $fecha = date('d/m/Y g:ia');
 
-        $sql ="INSERT INTO MensajesxSala (IDSala, IDUsuarioEmisor, Mensaje, Fecha) VALUES ('$idsala','$idusuario','$msg','$fecha')";
+        $sql ="INSERT INTO Mensajesindividuales (IDUsuarioEmisor, IDUsuarioReceptor, Mensaje, Fecha) VALUES ('$idemisor','$idreceptor','$msg','$fecha')";
         $result = mysqli_query($link, $sql);
 
-        $result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala INNER JOIN Usuario ON MensajesxSala.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDSala = '%s' ORDER BY IDMensajesxSala ASC",$idsala));
+        $result = mysqli_query ($link, sprintf ( "SELECT * FROM Mensajesindividuales INNER JOIN Usuario ON Mensajesindividuales.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDUsuarioEmisor = '%s' and IDUsuarioReceptor = '%s' or IDUsuarioEmisor = '%s' and IDUsuarioReceptor = '%s' ORDER BY IDMensajesIndividuales ASC",$idemisor, $idreceptor, $idreceptor, $idemisor));
         $mensajes=array();
 
         if (mysqli_num_rows($result)!= 0)
@@ -31,9 +35,10 @@
 
         if(isset($_POST['datos']))
         {
-            $idsala = $_SESSION['IDSala'];
+            $idreceptor = $_SESSION['IDPrivado'];
+            $idemisor = $_SESSION['IDUsuario'];
             //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-            $result = mysqli_query ($link, sprintf ( "SELECT * FROM MensajesxSala INNER JOIN Usuario ON MensajesxSala.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDSala = '%s' ORDER BY IDMensajesxSala ASC",$idsala));
+            $result = mysqli_query ($link, sprintf ( "SELECT * FROM Mensajesindividuales INNER JOIN Usuario ON Mensajesindividuales.IDUsuarioEmisor = Usuario.IDUsuario WHERE IDUsuarioEmisor = '%s' and IDUsuarioReceptor = '%s' or IDUsuarioEmisor = '%s' and IDUsuarioReceptor = '%s' ORDER BY IDMensajesIndividuales ASC",$idemisor, $idreceptor, $idreceptor, $idemisor));
             $mensajes=array();
 
             if (mysqli_num_rows($result)!= 0)

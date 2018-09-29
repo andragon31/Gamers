@@ -1,4 +1,4 @@
-var urlmensajes = 'https://localhost:8080/GCCHAT/php/solicitudesretos.php';
+var urlmensajes = 'https://localhost/GCCHAT/php/solicitudesretos.php';
 new Vue({
     el: '#solicitudesenviadas',
     created: function() {

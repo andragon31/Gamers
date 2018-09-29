@@ -1,4 +1,4 @@
-var urlmensajes = 'https://localhost:8080/GCCHAT/php/mensajesprivados.php';
+var urlmensajes = 'https://localhost/GCCHAT/php/mensajesprivados.php';
 new Vue({
     el: '#privados',
     created: function() {

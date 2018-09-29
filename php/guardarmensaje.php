@@ -5,7 +5,7 @@
     if(isset($_POST['message']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-        $msg = $_POST['message'];
+        $msg = mysqli_real_escape_string($link,$_POST['message']);
         $sql ="INSERT INTO mensajes (mensaje) VALUES ('$msg')";
         $result = mysqli_query($link, $sql);
 
