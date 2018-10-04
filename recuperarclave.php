@@ -12,7 +12,6 @@
       echo '<script> window.location = "principal.php";</script>';
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en" class="full-height">
 
@@ -35,51 +34,53 @@
 
     <!--Main Navigation-->
 <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#"><img style="width:100px; margin: -20px;" class="responsive-img" src="img/gclogo.png"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-        <br><br>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar rgba-indigo-light">
+        <a class="navbar-brand" href="principal.php"><img style="width:100px; margin: -20px;" class="responsive-img" src="img/gclogo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="col-md-8">
+        </div>
+        <div class="col">
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="principal.php">Salas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="micuenta.php">Mi Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="php/logout.php">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
         <div class="view intro-2">
             <div class="full-bg-img">
                 <div class="mask rgba-black-strong flex-center">
                     
-                <!-- Default form login -->
-                <form method="post" action="php/login.php" class="text-center border border-light p-5 rgba-black-strong">
+                <!-- Default form register -->
+                    <form method="post" action="php/restaurarclave.php" class="text-center border border-light p-5 rgba-black-strong">
 
-                        <p class="h4 mb-4 white-text">Ingresar</p>
-                    
-                        <!-- Email -->
-                        <div class="form-group">
-                            <input type="email" name="emaillg" id="inputValidationEx" class="form-control validate" placeholder="Email">
-                        </div>
-                        <!-- Password -->
-                        <input type="password" name="clavelg" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Contraseña">
-                    
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                <!-- Remember me -->
-                            </div>
-                            <div>
-                                <!-- Forgot password -->
-                                <a class="purple-text" href="recuperarclave.php">Olvidaste tu contraseña?</a>
-                            </div>
-                        </div>
-                    
-                        <!-- Sign in button -->
-                        <button name="login" class="btn btn-info btn-block my-4 purple darken-3" type="submit">Ingresar</button>
-                    
+                        <p class="h4 mb-4 white-text">Recuperar Contraseña</p>
+                               
+                        <!-- E-mail -->
+                        <input type="email" name="email" id="defaultRegisterFormEmail emailr" class="form-control mb-4" placeholder="Ingresa tu Email">
+                            
+                        <br>
+
+                        <!-- Sign up button -->
+                        <button name="recuperar" class="btn btn-info my-4 btn-block purple darken-3" type="submit">Recuperar</button>
+
                         <!-- Register -->
-                        <p class="white-text">No eres miembro?
-                            <a class="purple-text" href="registro.php">Registrate</a>
+                        <p class="white-text">Ya eres cuenta?
+                            <a class="purple-text" href="login.php">Ingresar</a>
                         </p>
-                    
                     </form>
-    <!-- Default form login -->
+                        <!-- Default form register -->
                 </div>
             </div>
         </div>

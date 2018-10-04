@@ -1,16 +1,16 @@
 <?php
     include 'conexion.php';
+    include 'ingresarsala.php';
 
     $_POST = json_decode(file_get_contents('php://input'), true);
     if(isset($_POST['message']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
         $msg = mysqli_real_escape_string($link,$_POST['message']);
-        $sql ="INSERT INTO mensajes (mensaje) VALUES ('$msg')";
-        $result = mysqli_query($link, $sql);
+        $idsala = $_SESSION['IDSala'];
+        $idusuario = $_SESSION['IDUsuario'];
 
-        $sql ="SELECT * FROM mensajes";
-        $result = mysqli_query($link, $sql);
+        $result = mysqli_query ($link, sprintf ("SELECT * FROM SolicitudReto INNER JOIN Usuario ON SolicitudReto.IDUsuarioRetado = Usuario.IDUsuario WHERE IDSala = '%s' AND (EstatusSolicitud = 'Pendiente' OR EstatusSolicitud = 'Aceptado')", $idsala));
         $mensajes=array();
 
         if (mysqli_num_rows($result)!= 0)
@@ -25,9 +25,9 @@
 
         if(isset($_POST['datos']))
         {
+            $idsala = $_SESSION['IDSala'];
             //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-            $sql ="SELECT * FROM mensajes";
-            $result = mysqli_query($link, $sql);
+            $result = mysqli_query ($link, sprintf ("SELECT * FROM SolicitudReto INNER JOIN Usuario ON SolicitudReto.IDUsuarioRetado = Usuario.IDUsuario WHERE IDSala = '%s' AND (EstatusSolicitud = 'Pendiente' OR EstatusSolicitud = 'Aceptado')", $idsala));
             $mensajes=array();
 
             if (mysqli_num_rows($result)!= 0)

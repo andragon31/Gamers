@@ -9,7 +9,7 @@
     if(isset($_POST['idsala']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-        $idsala = $_POST['idsala'];
+        $idsala = mysqli_real_escape_string($link,$_POST['idsala']);
         $idusuario = $_SESSION["IDUsuario"];
 
         //AQUI SE DEBE VERIFICAR SI EL USUARIO YA ESTA EN LA SALA, SINO ESTA SE ASIGNA EL USUARIO A LA SALA PARA PODER ENTRAR Y SE ABRE LA PANTALLA PRINCIPAL DE LA SALA
@@ -21,7 +21,7 @@
         }
         else
         {
-            var_dump($idsala, $idusuario);
+            //var_dump($idsala, $idusuario);
             $sql ="INSERT INTO UsuariosxSala (IDUsuario, IDSala) VALUES ('$idusuario', '$idsala')";
             $resultado = mysqli_query($link, $sql);  
             

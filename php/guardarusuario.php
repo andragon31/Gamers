@@ -1,16 +1,22 @@
 <?php
     include 'conexion.php';
+    include 'ingresarsala.php';
 
     $_POST = json_decode(file_get_contents('php://input'), true);
     if(isset($_POST['message']))
     {
         //echo '<script>alert("'.$_POST['msg'].'")</script> ';
         $msg = mysqli_real_escape_string($link,$_POST['message']);
-        $sql ="INSERT INTO mensajes (mensaje) VALUES ('$msg')";
+        $idsala = $_SESSION['IDSala'];
+        $idusuario = $_SESSION['IDUsuario'];
+        setlocale(LC_ALL, 'es_ES');
+        date_default_timezone_set('America/Tegucigalpa');
+        $fecha = date('d/m/Y g:ia');
+
+        $sql ="INSERT INTO MensajesxSala (IDSala, IDUsuarioEmisor, Mensaje, Fecha) VALUES ('$idsala','$idusuario','$msg','$fecha')";
         $result = mysqli_query($link, $sql);
 
-        $sql ="SELECT * FROM mensajes";
-        $result = mysqli_query($link, $sql);
+        $result = mysqli_query ($link, sprintf ( "SELECT * FROM UsuariosxSala INNER JOIN Usuario ON UsuariosxSala.IDUsuario = Usuario.IDUsuario WHERE IDSala = '%s'",$idsala));
         $mensajes=array();
 
         if (mysqli_num_rows($result)!= 0)
@@ -25,9 +31,9 @@
 
         if(isset($_POST['datos']))
         {
+            $idsala = $_SESSION['IDSala'];
             //echo '<script>alert("'.$_POST['msg'].'")</script> ';
-            $sql ="SELECT * FROM mensajes";
-            $result = mysqli_query($link, $sql);
+            $result = mysqli_query ($link, sprintf ( "SELECT * FROM UsuariosxSala INNER JOIN Usuario ON UsuariosxSala.IDUsuario = Usuario.IDUsuario WHERE IDSala = '%s'",$idsala));
             $mensajes=array();
 
             if (mysqli_num_rows($result)!= 0)

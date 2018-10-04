@@ -1,6 +1,6 @@
-var urlmensajes = 'https://localhost:8080/GCCHAT/php/mensajes2.php';
+var urlmensajes = 'https://localhost/GCCHAT/php/mensajes2.php';
 new Vue({
-    el: '#main',
+    el: '#usuarios',
     created: function() {
         this.getmensajes();
         this.traerdatos();
@@ -34,7 +34,7 @@ new Vue({
                 this.mensajejson = response.data;
                 this.msg="";
             }, function(){
-                alert("error");
+                console.log("error");
             });
         }
         ,
@@ -45,7 +45,7 @@ new Vue({
             }).then(function(response){
                 this.mensajejson = response.data;
             }, function(){
-                alert("error");
+                console.log("error");
             });
         }
 

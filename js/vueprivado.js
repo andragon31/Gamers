@@ -1,6 +1,6 @@
-var urlmensajes = 'https://localhost/GCCHAT/php/mensajes2.php';
+var urlmensajes = 'https://localhost/GCCHAT/php/mensajesprivados.php';
 new Vue({
-    el: '#main',
+    el: '#privados',
     created: function() {
         this.getmensajes();
         this.traerdatos();
@@ -23,7 +23,7 @@ new Vue({
         },
         enviarmensaje: function(msg) 
         {
-            this.$http.post('php/guardarmensaje2.php',{
+            this.$http.post('php/guardarprivados.php',{
                 message: this.msg
             }).then(function(response){
                 this.mensajejson = response.data;
@@ -35,7 +35,7 @@ new Vue({
         ,
         traerdatos: function(datos)
         {
-            this.$http.post('php/guardarmensaje2.php',{
+            this.$http.post('php/guardarprivados.php',{
                 datos: this.datos
             }).then(function(response){
                 this.mensajejson = response.data;
